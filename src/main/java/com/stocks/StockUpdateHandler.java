@@ -21,10 +21,7 @@ public class StockUpdateHandler implements Runnable {
 
     @Override
     public void run() {
-        if (!symbols.isEmpty()) {
-            executor.subscribe(symbols);
-            executor.startRequesting();
-        }
+        executor.startRequesting();
         System.out.println("hello");
     }
 }

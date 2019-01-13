@@ -4,8 +4,6 @@ import com.stocks.models.stocks.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -28,13 +26,7 @@ public class RequestExecutor {
 
     public void startRequesting() {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(CORE_POOL_SIZE);
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                service.run();
-            }
-        };
-        scheduledExecutorService.scheduleAtFixedRate(r, INITIAL_DELAY, PERIOD, TIME_UNIT);
+        scheduledExecutorService.scheduleAtFixedRate(service, INITIAL_DELAY, PERIOD, TIME_UNIT);
     }
 
 }

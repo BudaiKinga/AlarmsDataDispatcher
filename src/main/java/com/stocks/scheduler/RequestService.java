@@ -8,12 +8,11 @@ import com.stocks.scheduler.provider.StockProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Component
-public class RequestService{
+public class RequestService implements Runnable {
 
     @Autowired
     StockDataDispatcher publisher;
@@ -21,6 +20,7 @@ public class RequestService{
     @Autowired
     private StockProvider stockProvider;
 
+    @Override
     public void run() {
         List<StockPriceData> result = stockProvider.getPriceData();
         publisher.send(result);

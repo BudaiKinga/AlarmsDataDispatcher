@@ -35,8 +35,7 @@ public class StockProvider {
                 System.out.println("Information: " + metaData.get("1. Information"));
                 System.out.println("StockPriceData: " + metaData.get("2. Symbol"));
 
-                List<StockPriceData> stockData = response.getStockData();
-                return stockData;
+                result.addAll(response.getStockData());
             }
         } catch (Exception e) {
             e.printStackTrace();

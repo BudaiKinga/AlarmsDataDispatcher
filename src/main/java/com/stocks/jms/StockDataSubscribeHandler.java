@@ -2,12 +2,12 @@ package com.stocks.jms;
 
 import com.stocks.models.stocks.Code;
 import com.stocks.scheduler.provider.StockProvider;
-import com.stocks.scheduler.provider.alphavantage.StockData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class StockDataSubscribeHandler {
@@ -16,9 +16,9 @@ public class StockDataSubscribeHandler {
     StockProvider stockDataProvider;
 
     @JmsListener(destination = "${messaging.subscribe.subject}")
-    public void receive(Set<Code> msg) {
+    public void receive(Set<String> msg) {
         System.out.println("Received Message: " + msg);
-        stockDataProvider.updateSymbols(msg);
+        stockDataProvider.updateSymbols(msg.stream().map(Code::valueOf).collect(Collectors.toSet()));
     }
 
     public void addAsListener(StockProvider stockProvider) {
