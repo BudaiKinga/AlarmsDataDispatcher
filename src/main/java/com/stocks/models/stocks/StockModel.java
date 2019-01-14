@@ -1,3 +1,4 @@
+/*
 package com.stocks.models.stocks;
 
 import java.util.Map;
@@ -16,3 +17,4 @@ public class StockModel {
         );
     }
 }
+*/

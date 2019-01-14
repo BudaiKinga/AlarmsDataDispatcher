@@ -1,8 +1,5 @@
 package com.stocks.config;
 
-import javax.jms.ConnectionFactory;
-
-import com.stocks.jms.StockDataSubscribeHandler;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -16,6 +13,8 @@ import org.springframework.jms.support.converter.MappingJackson2MessageConverter
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
+import javax.jms.ConnectionFactory;
+
 @Configuration
 @EnableJms
 public class ConnectionFactoryConfig {
@@ -28,9 +27,6 @@ public class ConnectionFactoryConfig {
     @Value("${jsa.activemq.borker.password}")
     String password;
 
-    /*
-     * Initial ConnectionFactory
-     */
     @Bean
     public ConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
@@ -40,17 +36,14 @@ public class ConnectionFactoryConfig {
         return connectionFactory;
     }
 
-    @Bean // Serialize message content to json using TextMessage
+    @Bean
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
-
-    /*
-     * Used for sending Messages.
-     */
+    
     @Bean
     public JmsTemplate jmsTemplate() {
         JmsTemplate template = new JmsTemplate();

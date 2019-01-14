@@ -19,9 +19,8 @@ public class TimeSeries {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //return null;
-            json = TEST_EX;
-            return IntraDay.from(interval, json);
+            return null;
+
         }
         if (json == null) {
             System.out.println("something wrong: " + symbol);

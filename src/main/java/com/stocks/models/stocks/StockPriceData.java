@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class StockPriceData {
-
-
     private Code symbol;
     private LocalDateTime date;
     private Map<PriceType, Double> priceData;

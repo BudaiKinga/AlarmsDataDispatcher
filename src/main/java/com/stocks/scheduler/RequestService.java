@@ -1,7 +1,7 @@
 package com.stocks.scheduler;
 
 
-import com.stocks.jms.StockDataDispatcher;
+import com.stocks.messaging.StockDataDispatcher;
 import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.StockPriceData;
 import com.stocks.scheduler.provider.StockProvider;

@@ -1,6 +1,6 @@
 package com.stocks.scheduler.provider;
 
-import com.stocks.jms.StockDataSubscribeHandler;
+import com.stocks.messaging.StockDataSubscribeHandler;
 import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.StockPriceData;
 import com.stocks.scheduler.provider.alphavantage.*;

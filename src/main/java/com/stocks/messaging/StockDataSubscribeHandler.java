@@ -1,4 +1,4 @@
-package com.stocks.jms;
+package com.stocks.messaging;
 
 import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.StockPriceData;
