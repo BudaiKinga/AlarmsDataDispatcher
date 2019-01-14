@@ -31,6 +31,10 @@ public class IntraDay extends TimeSeriesResponse {
         return parser.parseJson(json);
     }
 
+    public StockPriceData getCurrentStockData() {
+        return getStockData().get(0);
+    }
+
     /**
      * Helper class for parsing json to {@code IntraDay}.
      *

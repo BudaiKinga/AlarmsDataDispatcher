@@ -23,6 +23,9 @@ public class RequestService implements Runnable {
     @Override
     public void run() {
         List<StockPriceData> result = stockProvider.getPriceData();
+        if (result.isEmpty()) {
+            return;
+        }
         publisher.send(result);
         System.out.println("Executed!");
     }
