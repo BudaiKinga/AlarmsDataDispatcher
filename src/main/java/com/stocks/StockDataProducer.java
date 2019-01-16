@@ -1,6 +1,5 @@
 package com.stocks;
 
-import com.stocks.models.stocks.Code;
 import com.stocks.scheduler.RequestExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,14 +9,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = { "com.stocks" })
-public class SpringActiveMqTopicProducerApplication implements CommandLineRunner {
+public class StockDataProducer implements CommandLineRunner {
 
     @Autowired
     private RequestExecutor executor;
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpringActiveMqTopicProducerApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(StockDataProducer.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringActiveMqTopicProducerApplication.class, args);
+        SpringApplication.run(StockDataProducer.class, args);
     }
 
     @Override

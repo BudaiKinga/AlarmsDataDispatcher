@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpringActiveMqTopicProducer.iml" filepath="$PROJECT_DIR$/SpringActiveMqTopicProducer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StockDataProducer.iml" filepath="$PROJECT_DIR$/StockDataProducer.iml" />
     </modules>
   </component>
 </project>
