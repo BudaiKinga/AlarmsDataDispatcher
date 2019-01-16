@@ -1,7 +1,5 @@
-package com.stocks.scheduler.provider.alphavantage;
+package com.stocks.scheduler.provider.alphavantage.queryparams;
 
-
-import com.stocks.scheduler.provider.alphavantage.queryparams.ApiParameter;
 
 public class ApiParameterBuilder {
     private StringBuilder urlBuilder;

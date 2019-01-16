@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SpringActiveMqTopicProducer" />
+        <module name="StockDataProducer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringActiveMqTopicProducer" target="1.8" />
+      <module name="StockDataProducer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

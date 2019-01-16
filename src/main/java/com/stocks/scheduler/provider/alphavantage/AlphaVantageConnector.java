@@ -1,10 +1,7 @@
 package com.stocks.scheduler.provider.alphavantage;
 
 
-import com.stocks.scheduler.provider.alphavantage.queryparams.Function;
-import com.stocks.scheduler.provider.alphavantage.queryparams.Interval;
-import com.stocks.scheduler.provider.alphavantage.queryparams.OutputSize;
-import com.stocks.scheduler.provider.alphavantage.queryparams.Symbol;
+import com.stocks.scheduler.provider.alphavantage.queryparams.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

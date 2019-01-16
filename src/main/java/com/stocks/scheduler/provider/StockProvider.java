@@ -25,6 +25,14 @@ public class StockProvider {
     @Autowired
     StockDataSubscribeHandler subscribeMsgHandler;
 
+    public TimeSeries getStockTimeSeries() {
+        return stockTimeSeries;
+    }
+
+    public void setStockTimeSeries(TimeSeries stockTimeSeries) {
+        this.stockTimeSeries = stockTimeSeries;
+    }
+
     @PostConstruct
     public void init() {
         subscribeMsgHandler.addAsListener(this);
@@ -56,7 +64,6 @@ public class StockProvider {
 
     public StockPriceData getPriceDataForSymbol(String symbol) {
         try {
-
             StockDataResponse response = null;
             while (response == null) {
                 response = stockTimeSeries.intraDay(symbol);
