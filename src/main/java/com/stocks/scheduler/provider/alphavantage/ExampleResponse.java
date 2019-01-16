@@ -1,6 +1,6 @@
 package com.stocks.scheduler.provider.alphavantage;
 
-public class Example {
+public class ExampleResponse {
     public static final String STRING = "{\n" +
             "    \"Meta Data\": {\n" +
             "        \"1. Information\": \"Intraday (5min) open, high, low, close prices and volume\",\n" +
@@ -13,7 +13,7 @@ public class Example {
             "    \"Time Series (1min)\": {\n" +
             "        \"2019-01-11 16:00:00\": {\n" +
             "            \"1. open\": \"102.7700\",\n" +
-            "            \"2. high\": \"102.9100\",\n" +
+            "            \"2. high\": \"%.4f\",\n" +
             "            \"3. low\": \"102.7200\",\n" +
             "            \"4. close\": \"102.7700\",\n" +
             "            \"5. volume\": \"1881938\"\n" +

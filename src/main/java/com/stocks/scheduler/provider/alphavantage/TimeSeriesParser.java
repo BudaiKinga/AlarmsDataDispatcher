@@ -8,32 +8,13 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-/**
- * Since the format for the time series responses differ slightly but on the whole
- * have the same structure the {@code TimeSeriesParser} extracts the similarity of
- * the parsing to this class.
- *
- * @param <Data> the response for each individual Response, i.e Intraday, Daily etc.
- * @see JsonParser
- */
+
 public abstract class TimeSeriesParser<Data> extends JsonParser<Data> {
 
-    /**
-     * The specifics of the resolution is pushed down to each response type, i.e Intraday, Daily etc.
-     *
-     * @param metaData  the meta data
-     * @param stockData the stock data
-     * @return the response for each individual response, i.e Intraday, Daily etc.
-     */
     abstract Data resolve(Map<String, String> metaData,
                           Map<String, Map<String, String>> stockData);
 
-    /**
-     * Gets the key for the stock data, this differs for each response type, i.e Intraday, Daily etc.
-     * This is used by the resolve method below.
-     *
-     * @return the stock data key
-     */
+
     abstract String getStockDataKey();
 
     @Override

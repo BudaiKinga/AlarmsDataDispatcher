@@ -1,5 +1,8 @@
 package com.stocks.models.stocks;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Map;
@@ -7,6 +10,9 @@ import java.util.Set;
 
 public class StockPriceData {
     private Code symbol;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private LocalDateTime date;
     private Map<PriceType, Double> priceData;
     private Set<PriceType> updatedPrices;
@@ -34,9 +40,22 @@ public class StockPriceData {
         return updatedPrices;
     }
 
-    public void updatePrices(Set<PriceType> updatedPrices, Map<PriceType, Double> priceData) {
-        for (PriceType pt : updatedPrices) {
-            this.priceData.put(pt, priceData.get(pt));
-        }
+    public void setSymbol(Code symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setPriceData(Map<PriceType, Double> priceData) {
+        this.priceData = priceData;
+    }
+
+    public void setUpdatedPrices(Set<PriceType> updatedPrices) {
+        this.updatedPrices = updatedPrices;
+    }
+
+    public StockPriceData() {
     }
 }

@@ -1,6 +1,9 @@
 package com.stocks;
 
 import com.stocks.models.stocks.Code;
+import com.stocks.scheduler.RequestExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,8 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringActiveMqTopicProducerApplication implements CommandLineRunner {
 
     @Autowired
-    StockUpdateHandler stockUpdateHandler;
-
+    private RequestExecutor executor;
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringActiveMqTopicProducerApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(SpringActiveMqTopicProducerApplication.class, args);
@@ -19,9 +22,7 @@ public class SpringActiveMqTopicProducerApplication implements CommandLineRunner
 
     @Override
     public void run(String... args) throws Exception {
-//        stockUpdateHandler.subscribe(Code.NCBS);
-        Thread th = new Thread(stockUpdateHandler);
-        th.start();
-
+        executor.startRequesting();
+        LOGGER.info("Stock Price data provider started successfully.");
     }
 }

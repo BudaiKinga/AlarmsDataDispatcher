@@ -1,6 +1,5 @@
 package com.stocks.config;
 
-import com.stocks.StockUpdateHandler;
 import com.stocks.scheduler.RequestExecutor;
 import com.stocks.scheduler.RequestService;
 import com.stocks.scheduler.provider.StockProvider;
@@ -8,6 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+/**
+ * Class used to configure stock update executor, service and provider beans to periodically send
+ * request for price data to Alphavantage for subscribed stocks.
+ */
 @Configuration
 public class StockDataHandlerFactoryConfig {
 
@@ -16,12 +19,6 @@ public class StockDataHandlerFactoryConfig {
     public RequestService service() {
         RequestService service = new RequestService();
         return service;
-    }
-
-    @Bean
-    public StockUpdateHandler stockUpdateHandler() {
-        StockUpdateHandler su = new StockUpdateHandler();
-        return su;
     }
 
     @Bean

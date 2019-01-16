@@ -1,3 +1,4 @@
+/*
 package com.stocks;
 
 import com.stocks.scheduler.RequestExecutor;
@@ -20,3 +21,4 @@ public class StockUpdateHandler implements Runnable {
         LOGGER.info("Stock Price data provider started successfully.");
     }
 }
+*/

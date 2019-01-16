@@ -15,6 +15,9 @@ import org.springframework.jms.support.converter.MessageType;
 
 import javax.jms.ConnectionFactory;
 
+/**
+ * Configuring ActiveMQ asynch messaging between this producer and (multiple) consumers
+ */
 @Configuration
 @EnableJms
 public class ConnectionFactoryConfig {
@@ -43,7 +46,7 @@ public class ConnectionFactoryConfig {
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
-    
+
     @Bean
     public JmsTemplate jmsTemplate() {
         JmsTemplate template = new JmsTemplate();

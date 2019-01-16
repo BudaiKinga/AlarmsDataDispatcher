@@ -1,12 +1,9 @@
-package com.stocks.scheduler.provider.alphavantage;
+package com.stocks.scheduler.provider.alphavantage.queryparams;
 
+import com.stocks.scheduler.provider.alphavantage.queryparams.ApiParameter;
 
-/**
- * Output size parameter for the time series api call.
- */
 public enum OutputSize implements ApiParameter {
-    COMPACT("compact"),
-    FULL("full");
+    COMPACT("compact");
 
     private final String outputSize;
 

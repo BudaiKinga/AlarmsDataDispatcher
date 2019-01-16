@@ -13,6 +13,7 @@ public class StockDataDispatcher {
 
     @Autowired
     JmsTemplate jmsTemplate;
+
     @Value("${messaging.stockdata.subject}")
     String topic;
 

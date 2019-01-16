@@ -2,14 +2,12 @@ package com.stocks.scheduler;
 
 
 import com.stocks.messaging.StockDataDispatcher;
-import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.StockPriceData;
 import com.stocks.scheduler.provider.StockProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class RequestService implements Runnable {
@@ -27,10 +25,5 @@ public class RequestService implements Runnable {
             return;
         }
         publisher.send(result);
-        System.out.println("Executed!");
-    }
-
-    public void suscribe(Set<Code> symbols) {
-        stockProvider.updateSymbols(symbols);
     }
 }

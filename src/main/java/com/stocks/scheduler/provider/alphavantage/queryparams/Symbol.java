@@ -1,9 +1,7 @@
-package com.stocks.scheduler.provider.alphavantage;
+package com.stocks.scheduler.provider.alphavantage.queryparams;
 
+import com.stocks.scheduler.provider.alphavantage.queryparams.ApiParameter;
 
-/**
- * The symbol parameter for the technical indicators/time series api call.
- */
 public class Symbol implements ApiParameter {
     private String symbol;
 

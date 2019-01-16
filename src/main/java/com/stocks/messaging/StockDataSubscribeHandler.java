@@ -3,6 +3,8 @@ package com.stocks.messaging;
 import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.StockPriceData;
 import com.stocks.scheduler.provider.StockProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.annotation.JmsListener;
@@ -24,9 +26,11 @@ public class StockDataSubscribeHandler {
     @Autowired
     JmsTemplate jmsTemplate;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StockDataSubscribeHandler.class);
+
     @JmsListener(destination = "${messaging.subscribe.subject}")
-    public void receive(Set<String> msg) {
-        System.out.println("Received Message: " + msg);
+    public void receiveSubscribeMessage(Set<String> msg) {
+        LOGGER.info("Received Message: " + msg);
         stockDataProvider.updateSymbols(msg.stream().map(Code::valueOf).collect(Collectors.toSet()));
     }
 
@@ -36,7 +40,7 @@ public class StockDataSubscribeHandler {
 
     @JmsListener(destination = "${messaging.init.subject}")
     public void receiveRequestToInitPrice(String code) {
-        System.out.println("Received Message to init price for : " + code);
+        LOGGER.info("Received Message to init price for : " + code);
         StockPriceData spd = stockDataProvider.getPriceDataForSymbol(code);
         sendInitialPrice(spd);
     }

@@ -4,29 +4,34 @@ package com.stocks.scheduler.provider.alphavantage;
 import com.stocks.models.stocks.Code;
 import com.stocks.models.stocks.PriceType;
 import com.stocks.models.stocks.StockPriceData;
+import com.stocks.scheduler.provider.alphavantage.queryparams.Interval;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
-/**
- * Representation of intra day response from api.
- *
- * @see TimeSeriesResponse
- */
-public class IntraDay extends TimeSeriesResponse {
+public class StockDataResponse {
+    private final Map<String, String> metaData;
+    private final List<StockPriceData> stockData;
 
-    private IntraDay(final Map<String, String> metaData, final List<StockPriceData> stocks) {
-        super(metaData, stocks);
+    public Map<String, String> getMetaData() {
+        return metaData;
     }
 
-    /**
-     * Creates {@code IntraDay} instance from json.
-     *
-     * @param json string to parse
-     * @return IntraDay instance
-     */
-    public static IntraDay from(Interval interval, String json) {
+    public List<StockPriceData> getStockData() {
+        return stockData;
+    }
+
+    private StockDataResponse(final Map<String, String> metaData, final List<StockPriceData> stocks) {
+        this.stockData = stocks;
+        this.metaData = metaData;
+    }
+
+
+    public static StockDataResponse from(Interval interval, String json) {
         Parser parser = new Parser(interval);
         return parser.parseJson(json);
     }
@@ -35,13 +40,8 @@ public class IntraDay extends TimeSeriesResponse {
         return getStockData().get(0);
     }
 
-    /**
-     * Helper class for parsing json to {@code IntraDay}.
-     *
-     * @see TimeSeriesParser
-     * @see JsonParser
-     */
-    private static class Parser extends TimeSeriesParser<IntraDay> {
+
+    private static class Parser extends TimeSeriesParser<StockDataResponse> {
         private final Interval interval;
 
         Parser(Interval interval) {
@@ -54,7 +54,7 @@ public class IntraDay extends TimeSeriesResponse {
         }
 
         @Override
-        IntraDay resolve(Map<String, String> metaData, Map<String, Map<String, String>> stockData) {
+        StockDataResponse resolve(Map<String, String> metaData, Map<String, Map<String, String>> stockData) {
             List<StockPriceData> stocks = new ArrayList<>();
             try {
                 Code symbol = Code.valueOf(metaData.get("2. Symbol"));
@@ -71,7 +71,7 @@ public class IntraDay extends TimeSeriesResponse {
                 e.printStackTrace();
                 return null;
             }
-            return new IntraDay(metaData, stocks);
+            return new StockDataResponse(metaData, stocks);
         }
     }
 
