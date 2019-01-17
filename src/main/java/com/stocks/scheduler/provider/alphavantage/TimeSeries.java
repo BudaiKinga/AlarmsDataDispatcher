@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class TimeSeries {
     private static final String EXCEEDED_STR = "{    \"Note\": \"Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency.\"}";
-    private static final String TEST_EX = ExampleResponse.STRING;
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeSeries.class);
     private final AlphaVantageConnector apiConnector;
 
@@ -25,9 +24,7 @@ public class TimeSeries {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //return null;
-            Random r = new Random();
-            json = String.format(TEST_EX,r.nextDouble());
+            return null;
         }
         if (json == null) {
             LOGGER.warn("No response for: " + symbol);
